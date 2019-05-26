@@ -1,20 +1,21 @@
-var check = function() {
+function check() {
+  //  Get all buttons in DOM
   var allButtons = document.getElementsByClassName('follow-button');
 
-  for (var i=0; i<allButtons.length; i++) {
-    var currentButton = allButtons[0];
-    var buttonText = currentButton.childNodes[1].innerText;
+  //  For each button in HTMLCollection
+  for (let item of allButtons) {
+    //  Grab the text of the button
+    var buttonText = item.childNodes[1].innerText;
 
     if(buttonText === "FOLLOW") {
-      currentButton.click();
+      item.click();
       console.log("Followed");
-      window.scrollTo(0,document.body.scrollHeight);
-      setTimeout(check, 2500);
     }
     else if(buttonText === "FOLLOWING") {
       console.log("Already Following");
     }
   }
+  window.scrollTo(0,document.body.scrollHeight);
+  setTimeout(check, 25000);
 }
-
-check();
+check()
