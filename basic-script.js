@@ -1,4 +1,5 @@
-function check() {
+//  Check if Users on Page Are Being Followed
+function checkIfFollowing() {
   //  Get all buttons in DOM
   var allButtons = document.getElementsByClassName('follow-button');
 
@@ -15,7 +16,39 @@ function check() {
       console.log("Already Following");
     }
   }
-  window.scrollTo(0,document.body.scrollHeight);
-  setTimeout(check, 25000);
+  setTimeout(checkIfFollowing, 25000);
 }
-check()
+
+//  Scroll Every 5 Seconds
+function scroll() {
+  window.scrollTo(0,document.body.scrollHeight);
+  setTimeout(scroll, 5000);
+}
+
+//  Check if User Has Default Avatar
+function checkAvatar() {
+  var allAvatars = document.getElementsByClassName('user-photo');
+  var getAvatar = allAvatars[0].childNodes[0].childNodes[0].src
+  
+  var defaultAvatar = "https://hashnode.imgix.net/res/hashnode/image/upload/v1543775253858/B1AzNobk4.png?w=241&h=241&fit=crop&crop=entropy&auto=format,enhance&q=60"
+
+  if (getAvatar == defaultAvatar) {
+    skip
+  }
+  else {
+    follow
+  }
+}
+
+//  Check if User Has Empty Biography
+function checkBioExists() {
+  var allBios = document.getElementsByClassName('user-info');
+  var getBioText = allBios[0].outerText
+  var emptyBio = ""
+  if (getBioText == emptyBio) {
+    skip
+  }
+  else {
+    follow
+  }
+}
